@@ -14,7 +14,7 @@
 		public function view($slug = NULL) {
 			$data['post'] = $this->post_model->get_posts($slug);
 			$data['post_cat'] = $this->post_model->my_cat($slug);
-			print_r($data['post_cat']);
+
 			if (empty($data['post'])) {
 				show_404();
 			}

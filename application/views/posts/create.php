@@ -21,5 +21,6 @@
       <label>File input</label>
       <input type="file" class="form-control-file" name="userfile">
     </div>
-	<button type="submit" class="btn btn-primary">Submit</button>
+	<button type="submit" class="btn btn-primary mr-2">Submit</button>
+	<a href="<?= site_url();?>posts" class="btn btn-danger"> Cancel</a>
 </form>

@@ -24,5 +24,6 @@
 			<?php endforeach; ?>
 		</select>
 	</div>
-	<button type="submit" class="btn btn-primary">Submit</button>
+	<button type="submit" class="btn btn-primary">Create</button>
+	<a href="<?= site_url();?>posts/<?php echo $post['slug']; ?>" class="btn btn-danger"> Cancel</a>
 </form>
