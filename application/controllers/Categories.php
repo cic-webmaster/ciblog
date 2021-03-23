@@ -5,6 +5,8 @@
 			$data['title'] = 'Categories';
 
 			$data['categories'] = $this->post_model->get_categories();
+			
+			$data = $this->security->xss_clean($data);
 
 			$this->load->view('templates/header');
 			$this->load->view('categories/index', $data);
@@ -32,7 +34,9 @@
 				$this->load->view('categories/create', $data);
 				$this->load->view('templates/footer');
 			} else {
+
 				$this->category_model->create();
+				$this->session->set_flashdata('category_created', 'Category Created');
 				redirect('categories');
 			}
 		}

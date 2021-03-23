@@ -22,7 +22,9 @@
 			$data = array(
 				'name' => $this->input->post('category_name')
 			);
-
+			// for security
+			// $data = $this->security->xss_clean($data);
+			// return $this->db->insert('posts_categories', html_escape($data));
 			return $this->db->insert('posts_categories', $data);
 		}
 	}

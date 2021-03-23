@@ -9,7 +9,7 @@
 		<h3><?php echo $post['title']; ?></h3>
 		<small>Posted on: <?php echo $post['created_at']; ?> in <strong><?php echo $post['name'] ?></strong></small>
 		<p><?php echo word_limiter($post['body'], 60); ?></p>
-		<p><a class="btn btn-success" href="<?php echo site_url('posts/'.$post['slug']); ?>"> Read more..</a></p>
+		<p><a class="btn btn-info" href="<?php echo site_url('posts/'.$post['slug']); ?>"> Read more..</a></p>
 	</div>
 </div>
 <hr>

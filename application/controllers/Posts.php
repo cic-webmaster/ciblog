@@ -60,6 +60,8 @@
 				}
 
 				$this->post_model->create_post($post_image);
+				// Set alert flashdata
+				$this->session->set_flashdata('post_created', 'Post created.');
 				redirect('posts');
 			}
 		}
@@ -67,6 +69,7 @@
 		public function delete($id) {
 			if ($this->input->post('submit')) {
 				$this->post_model->delete_post($id);
+				$this->session->set_flashdata('post_deleted', 'Post deleted.');
 				redirect('posts');
 			} else {
 				redirect('posts');
@@ -81,7 +84,7 @@
 			if (empty($data['post'])) {
 				show_404();
 			}
-
+			$this->session->set_flashdata('post_edited', 'Post edited.');
 			$this->load->view('templates/header');
 			$this->load->view('posts/edit', $data);
 			$this->load->view('templates/footer');
@@ -90,6 +93,7 @@
 		public function update($id){
 			$this->post_model->update_post($id);
 			$slug = $this->post_model->get_slug();
+			$this->session->set_flashdata('post_updated', 'Post updated.');
 			redirect('posts/'.$slug);
 		}
 	}
