@@ -9,4 +9,12 @@
     background-color: #384459;
     color: #f3f3f3;
 }
-
+.card-header {
+	height: 40px;
+	overflow: hidden;
+	font-size: 12px;
+	padding: 10px;
+}
+.card-body {
+	padding: 10px;
+}
