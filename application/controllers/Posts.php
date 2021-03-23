@@ -63,8 +63,12 @@
 		}
 
 		public function delete($id) {
-			$this->post_model->delete_post($id);
-			redirect('posts');
+			if ($this->input->post('submit')) {
+				$this->post_model->delete_post($id);
+				redirect('posts');
+			} else {
+				redirect('posts');
+			}
 		}
 
 		public function edit($slug) {
