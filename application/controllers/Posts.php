@@ -28,6 +28,10 @@
 		}
 
 		public function create() {
+			//Check session
+			if (!$this->session->userdata('loggedin')) {
+				redirect('users/login');
+			}
 
 			$data['title'] = 'Create Post';
 
@@ -67,16 +71,22 @@
 		}
 
 		public function delete($id) {
-			if ($this->input->post('submit')) {
-				$this->post_model->delete_post($id);
-				$this->session->set_flashdata('post_deleted', 'Post deleted.');
-				redirect('posts');
-			} else {
-				redirect('posts');
+			if (!$this->session->userdata('loggedin')) {
+				redirect('users/login');
 			}
+
+			$this->post_model->delete_post($id);
+			$this->session->set_flashdata('post_deleted', 'Post deleted.');
+			redirect('posts');
+
 		}
 
 		public function edit($slug) {
+
+			if (!$this->session->userdata('loggedin')) {
+				redirect('users/login');
+			}
+
 			$data['title'] = 'Edit Post';
 			$data['post'] = $this->post_model->get_posts($slug);
 			$data['categories'] = $this->post_model->get_categories();
@@ -91,6 +101,11 @@
 		}
 
 		public function update($id){
+			
+			if (!$this->session->userdata('loggedin')) {
+				redirect('users/login');
+			}
+
 			$this->post_model->update_post($id);
 			$slug = $this->post_model->get_slug();
 			$this->session->set_flashdata('post_updated', 'Post updated.');

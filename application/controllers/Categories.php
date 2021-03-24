@@ -6,7 +6,7 @@
 
 			$data['categories'] = $this->post_model->get_categories();
 			
-			$data = $this->security->xss_clean($data);
+			// $data = $this->security->xss_clean($data);
 
 			$this->load->view('templates/header');
 			$this->load->view('categories/index', $data);
@@ -25,6 +25,10 @@
 
 		public function create() {
 
+			if (!$this->session->userdata('loggedin')) {
+				redirect('users/login');
+			}
+			
 			$data['title'] = 'Create Categories';
 
 			$this->form_validation->set_rules('category_name', 'Category Name', 'required');
