@@ -1,7 +1,7 @@
 <?php
  class User_model extends CI_model{
  	public function register($enc_password) {
- 		//Get the register data
+ 		//Get the register database
  		$data = array(
  			'name' => $this->input->post('name'),
  			'email' => $this->input->post('email'),
